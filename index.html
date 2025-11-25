@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLAS Dashboard</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f7fafc}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+.box{background:#fff;padding:40px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-width:400px;width:100%}
+h1{color:#2c5282;font-size:28px;margin-bottom:8px;text-align:center}
+p{color:#718096;font-size:14px;text-align:center;margin-bottom:30px}
+input,select{width:100%;padding:12px;border:2px solid #e2e8f0;border-radius:8px;margin-bottom:20px;font-size:14px}
+button{width:100%;padding:12px;background:#2c5282;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer}
+button:hover{background:#2a4365}
+.dash{display:none;padding:20px}
+.dash.show{display:block}
+.header{background:#2c5282;color:#fff;padding:20px;margin-bottom:20px;border-radius:8px}
+table{width:100%;background:#fff;border-collapse:collapse;border-radius:8px;overflow:hidden}
+th,td{padding:15px;text-align:left;border-bottom:1px solid #e2e8f0}
+th{background:#f7fafc;font-weight:600}
+.btn{padding:8px 16px;border:none;border-radius:6px;cursor:pointer;margin:2px;font-size:12px}
+.btn-edit{background:#2c5282;color:#fff}
+.btn-del{background:#f56565;color:#fff}
+.active{background:#c6f6d5;color:#22543d;padding:4px 12px;border-radius:12px;font-size:12px}
+.info{background:#f7fafc;padding:15px;border-radius:8px;font-size:12px;color:#718096;margin-top:20px}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+<div class="box">
+<h1>ATLAS Dashboard</h1>
+<p>Ausload Shifting Workforce</p>
+<input type="text" id="user" placeholder="Username">
+<input type="password" id="pass" placeholder="Password">
+<button onclick="doLogin()">Login</button>
+<div class="info"><strong>Demo:</strong><br>Admin: Judy Irmisch / Irmisch2025</div>
+</div>
+</div>
+<div id="dash" class="dash">
+<div class="header">
+<h2>ATLAS Workforce Dashboard</h2>
+<p>Welcome, <span id="name"></span></p>
+<button onclick="doLogout()" style="width:auto;padding:8px 20px">Logout</button>
+</div>
+<table>
+<tr><th>ATLAS ID</th><th>Name</th><th>Position</th><th>Phone</th><th>State</th><th>Status</th></tr>
+<tr><td>ADAMDavid</td><td>David ADAM</td><td>Contractor</td><td>0409-992-215</td><td>NSW</td><td><span class="active">Active</span></td></tr>
+<tr><td>SMITHJohn</td><td>John SMITH</td><td>Operator</td><td>0412-345-678</td><td>VIC</td><td><span class="active">Active</span></td></tr>
+</table>
+</div>
+<script>
+function doLogin(){
+var u=document.getElementById('user').value;
+var p=document.getElementById('pass').value;
+if((u=='Judy Irmisch'&&p=='Irmisch2025')||(u=='Stacy Thompson'&&p=='Thompson2025')){
+document.getElementById('login').style.display='none';
+document.getElementById('dash').classList.add('show');
+document.getElementById('name').textContent=u;
+}else{alert('Invalid login');}
+}
+function doLogout(){
+document.getElementById('login').style.display='flex';
+document.getElementById('dash').classList.remove('show');
+document.getElementById('user').value='';
+document.getElementById('pass').value='';
+}
+</script>
+</body>
+</html>
 
